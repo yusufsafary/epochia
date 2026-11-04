@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Whitepaper · Epochia</title>
+<meta name="description" content="The Epochia whitepaper: one NFT key, a daily token harvest, and an eleven-epoch halving schedule.">
+<link rel="icon" href="/favicon.svg?v=1"><link rel="stylesheet" href="/style.css?v=1"></head>
+<body>
+<div class="strip">EPOCHIA OPENS SOON · <b>THE KEY COMES FIRST</b> · CONTRACTS ANNOUNCED AT LAUNCH</div>
+<header class="top"><div class="wrap top-in"><a class="logo" href="/"><svg class="keydot" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="14" cy="14" r="9" stroke="#211812" stroke-width="4"/><path d="M20 20 L34 34 M28 28 L34 22 M24 24 L29 19" stroke="#FF6B4A" stroke-width="4" stroke-linecap="round"/></svg>EPOCHIA</a><nav class="main"><a href="/" class="">Home</a><a href="/whitepaper.html" class="on">Whitepaper</a><a href="/tokenomics.html" class="">Tokenomics</a><a href="/docs.html" class="">Docs</a></nav></div></header>
+<div class="wrap pagehead"><span class="tag">Whitepaper</span><h1 style="font-size:clamp(40px,8vw,72px)">Mining, minus the friction</h1></div>
+<section class="blk doc" style="border-bottom:none"><div class="wrap">
+<h2>Why Epochia exists</h2>
+<p>Agent mining projects usually ask users to pay again and again: per share, per boost, per entry. Each payment is a chance to hesitate, misread a price, or give up. Epochia removes the repeat payments entirely. <b>There is exactly one purchase in the whole system: the Epoch Key.</b> Everything after that is a harvest, not a checkout.</p>
+<h2>The key</h2>
+<p>The Epoch Key is a non-fungible token on BNB Chain, priced at $0.50 in BNB, capped at 10,000 keys and at most 10 keys per wallet. Minting runs only through a Binance Agentic Wallet agent, and the minting wallet must hold a Binance Agent ID. The key is transferable: whoever holds the key holds its future harvest, and claims already collected stay with whoever collected them.</p>
+<h2>The harvest</h2>
+<ul>
+<li><b>One key, one claim per day.</b> Claims accrue per key from the day after the key is minted.</li>
+<li><b>Claims stack.</b> Uncollected days accumulate and are paid in one call, at the rates of the days they belong to.</li>
+<li><b>No claim fee.</b> Harvesting moves only EPO. The network gas is the only cost.</li>
+<li><b>Counting is global.</b> Every claim paid by the contract, to anyone, advances the shared claim counter.</li>
+</ul>
+<h2>Epochs and halving</h2>
+<p>Epochia borrows its clock from Bitcoin and swaps blocks for claims. Every 150,000 claims paid network-wide, the per-claim amount halves. There are eleven epochs. When Epoch 11 ends, harvesting ends with it, and any EPO left in the mining reserve is never created into circulation.</p>
+<table class="sched"><tr><th>Epoch</th><th class="n">Per claim</th><th class="n">Epoch length</th></tr><tr class="now"><td>Epoch 1</td><td class="n">42,000 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 2</td><td class="n">21,000 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 3</td><td class="n">10,500 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 4</td><td class="n">5,250 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 5</td><td class="n">2,625 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 6</td><td class="n">1,312 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 7</td><td class="n">656 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 8</td><td class="n">328 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 9</td><td class="n">164 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 10</td><td class="n">82 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 11</td><td class="n">41 EPO</td><td class="n">150,000 claims</td></tr></table>
+<h2>Where the money goes</h2>
+<p>Key sales are the project's only direct revenue. They accumulate in the key contract as BNB, are withdrawable by the project, and seed the initial EPO liquidity pool on PancakeSwap at the token launch. The full allocation is on the <a href="/tokenomics.html">tokenomics page</a>.</p>
+<h2>Honest limits</h2>
+<p>EPO begins with no market price; the pool sets one at launch and it can move sharply either way. A key guarantees a harvest schedule, not a dollar value. If few keys sell, epochs simply run longer in calendar time, because the halving counts claims, not days.</p>
+</div></section>
+<footer><div class="wrap">
+<div class="cols">
+<div><h4>Epochia</h4><p style="font-weight:560;max-width:340px">One key opens the mine. Hold the Epoch Key, harvest EPO every day, and watch the epochs halve the harvest until the mine closes for good.</p></div>
+<div><h4>Read</h4><a href="/whitepaper.html">Whitepaper</a><a href="/tokenomics.html">Tokenomics</a><a href="/docs.html">Docs and FAQ</a><a href="/epochia-skill.md">Agent skill file</a></div>
+<div><h4>Contracts</h4><a href="#">Epoch Key (NFT): announced at launch</a><a href="#">EPO token: announced at launch</a><a href="#">Harvest: announced at launch</a></div>
+</div>
+<p class="fine">EPOCHIA · EPOCHIA.XYZ · BNB SMART CHAIN · MINTING RUNS ONLY THROUGH YOUR OWN BINANCE AGENTIC WALLET AGENT · THIS SITE NEVER ASKS YOU TO CONNECT A WALLET</p>
+</div></footer>
+</body></html>
