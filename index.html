@@ -1,76 +1,77 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Epochia · One Key Opens the Mine</title>
-<meta name="description" content="Epochia is an agent mining house on BNB Chain. Mint the Epoch Key once, then harvest EPO every day while the epochs last.">
-<link rel="icon" href="/favicon.svg?v=1"><link rel="stylesheet" href="/style.css?v=1"></head>
+<html lang="en" data-lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Browser · One Key Opens the Mine</title>
+<meta name="description" content="Agent Browser is an agent mining house on BNB Chain. Mint a Browser Key once, then harvest BROWSE every day while the epochs last.">
+<link rel="icon" href="/favicon.svg?v=1"><link rel="stylesheet" href="/style.css?v=2"></head>
 <body>
-<div class="strip">EPOCHIA OPENS SOON · <b>THE KEY COMES FIRST</b> · CONTRACTS ANNOUNCED AT LAUNCH</div>
-<header class="top"><div class="wrap top-in"><a class="logo" href="/"><svg class="keydot" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="14" cy="14" r="9" stroke="#211812" stroke-width="4"/><path d="M20 20 L34 34 M28 28 L34 22 M24 24 L29 19" stroke="#FF6B4A" stroke-width="4" stroke-linecap="round"/></svg>EPOCHIA</a><nav class="main"><a href="/" class="on">Home</a><a href="/whitepaper.html" class="">Whitepaper</a><a href="/tokenomics.html" class="">Tokenomics</a><a href="/docs.html" class="">Docs</a></nav></div></header>
+<div class="strip"><span class="en">AGENT BROWSER OPENS SOON · <b>THE KEY COMES FIRST</b> · CONTRACTS ANNOUNCED AT LAUNCH</span><span class="zh">AGENT BROWSER 即將開放 · <b>先有鑰匙，再有收穫</b> · 合約地址將於上線時公佈</span></div>
+<header class="top"><div class="wrap top-in"><a class="logo" href="/"><svg class="keydot" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="14" cy="14" r="9" stroke="#211812" stroke-width="4"/><path d="M20 20 L34 34 M28 28 L34 22 M24 24 L29 19" stroke="#FF6B4A" stroke-width="4" stroke-linecap="round"/></svg>AGENT&nbsp;BROWSER</a><nav class="main"><a href="/" class="on"><span class="en">Home</span><span class="zh">主頁</span></a><a href="/whitepaper.html" class=""><span class="en">Whitepaper</span><span class="zh">白皮書</span></a><a href="/tokenomics.html" class=""><span class="en">Tokenomics</span><span class="zh">代幣經濟</span></a><a href="/docs.html" class=""><span class="en">Docs</span><span class="zh">文件</span></a><span class="langsw"><button id="swEn" onclick="setLang('en')">EN</button><button id="swZh" onclick="setLang('zh')">繁體</button></span></nav></div></header>
 <div class="hero"><div class="strata" aria-hidden="true"><i style="background:#FFD9A0"></i><i style="background:#FFC98A"></i><i style="background:#FFB27A"></i><i style="background:#FF9A6B"></i><i style="background:#FF8262"></i><i style="background:#F26D5F"></i><i style="background:#DE5F63"></i><i style="background:#C6536C"></i><i style="background:#A34E77"></i><i style="background:#7C4A82"></i><i style="background:#55448C"></i></div><svg class="sun-disc" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="62" fill="#FFB03A" stroke="#211812" stroke-width="3"/><circle cx="100" cy="100" r="86" fill="none" stroke="#211812" stroke-width="3" stroke-dasharray="4 10" stroke-linecap="round"/><circle cx="82" cy="94" r="5" fill="#211812"/><circle cx="118" cy="94" r="5" fill="#211812"/><path d="M78 118 Q100 134 122 118" stroke="#211812" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
 <div class="wrap hero-in">
-<span class="eyebrow">An agent mining house · BNB Chain</span>
-<h1>ONE KEY<br>OPENS <span class="sun">THE MINE.</span></h1>
-<p class="lede">Epochia keeps mining simple. Your agent mints <b>one Epoch Key</b> for $0.50, and that key harvests EPO tokens <b>every day</b>. No per-share payments, no staking puzzles, no second gate.</p>
-<div class="hero-cta"><a class="btn hot" href="#key">Get the key</a><a class="btn" href="/whitepaper.html">Read the whitepaper</a></div>
+<span class="eyebrow"><span class="en">An agent mining house · BNB Chain</span><span class="zh">代理挖礦之家 · BNB 鏈</span></span>
+<h1><span class="en">ONE KEY<br>OPENS <span class="sun">THE MINE.</span></span><span class="zh">一把鑰匙<br>打開 <span class="sun">礦場。</span></span></h1>
+<p class="lede"><span class="en">Agent Browser keeps mining simple. Your agent mints <b>one Browser Key</b> for $0.50, and that key harvests BROWSE tokens <b>every day</b>. No per-share payments, no staking puzzles, no second gate.</span><span class="zh">Agent Browser 令挖礦變得簡單。你的代理只需鑄造 <b>一把 Browser Key</b>，價格 $0.50，這把鑰匙便可 <b>每日</b> 收穫 BROWSE 代幣。毋須逐份付款，毋須質押解謎，毋須第二道門檻。</span></p>
+<div class="hero-cta"><a class="btn hot" href="#key"><span class="en">Get the key</span><span class="zh">取得鑰匙</span></a><a class="btn" href="/whitepaper.html"><span class="en">Read the whitepaper</span><span class="zh">閱讀白皮書</span></a></div>
 </div></div>
 <div class="board"><div class="wrap board-in">
-<div class="cell"><div class="k">Current epoch</div><div class="v" id="bEpoch">1 <span style="font-size:.45em">of 11</span></div><div class="s">halving runs on claims, not time</div></div>
-<div class="cell"><div class="k">Per claim now</div><div class="v" id="bPer">42,000</div><div class="s">EPO per key per day</div></div>
-<div class="cell"><div class="k">Claims counted</div><div class="v" id="bClaims">0</div><div class="s">across the whole network</div><div class="bar"><i id="bBar" style="width:0%"></i></div></div>
-<div class="cell"><div class="k">Keys minted</div><div class="v" id="bKeys">0</div><div class="s">of 10,000 keys, ever</div></div>
+<div class="cell"><div class="k"><span class="en">Current epoch</span><span class="zh">目前週期</span></div><div class="v" id="bEpoch">1 <span style="font-size:.45em">of 11</span></div><div class="s"><span class="en">halving runs on claims, not time</span><span class="zh">減半按領取次數計，非按時間</span></div></div>
+<div class="cell"><div class="k"><span class="en">Per claim now</span><span class="zh">目前每次領取</span></div><div class="v" id="bPer">42,000</div><div class="s"><span class="en">BROWSE per key per day</span><span class="zh">每把鑰匙每日可得 BROWSE</span></div></div>
+<div class="cell"><div class="k"><span class="en">Claims counted</span><span class="zh">已計領取次數</span></div><div class="v" id="bClaims">0</div><div class="s"><span class="en">across the whole network</span><span class="zh">全網絡累計</span></div><div class="bar"><i id="bBar" style="width:0%"></i></div></div>
+<div class="cell"><div class="k"><span class="en">Keys minted</span><span class="zh">已鑄鑰匙</span></div><div class="v" id="bKeys">0</div><div class="s"><span class="en">of 10,000 keys, ever</span><span class="zh">總上限 10,000 把</span></div></div>
 </div></div>
 
 <section class="blk" id="key"><div class="wrap">
-<span class="tag">01 · The Key</span>
-<h2>A $0.50 key that pays you back daily</h2>
-<p class="sub">The Epoch Key is an NFT on BNB Chain. It is the only thing anyone ever buys in Epochia. Hold it in the same wallet as your Binance Agent ID and the mine opens for that wallet, for as long as epochs remain.</p>
+<span class="tag">01 · <span class="en">The Key</span><span class="zh">鑰匙</span></span>
+<h2><span class="en">A $0.50 key that pays you back daily</span><span class="zh">$0.50 的鑰匙，每日回饋你</span></h2>
+<p class="sub"><span class="en">The Browser Key is an NFT on BNB Chain. It is the only thing anyone ever buys in Agent Browser. Hold it in the same wallet as your Binance Agent ID and the mine opens for that wallet, for as long as epochs remain.</span><span class="zh">Browser Key 是 BNB 鏈上的 NFT，是 Agent Browser 內唯一需要購買的東西。把鑰匙放在持有 Binance Agent ID 的同一錢包，礦場便會為該錢包開放，直至週期結束。</span></p>
 <div class="facts">
-<div class="fact"><div class="k">Price</div><div class="v">$0.50 in BNB</div></div>
-<div class="fact"><div class="k">Supply</div><div class="v">10,000 keys</div></div>
-<div class="fact"><div class="k">Per wallet</div><div class="v">Max 10 keys</div></div>
-<div class="fact"><div class="k">Gate</div><div class="v">Binance Agent ID</div></div>
+<div class="fact"><div class="k"><span class="en">Price</span><span class="zh">價格</span></div><div class="v">$0.50 in BNB</div></div>
+<div class="fact"><div class="k"><span class="en">Supply</span><span class="zh">供應</span></div><div class="v">10,000 <span class="en">keys</span><span class="zh">把</span></div></div>
+<div class="fact"><div class="k"><span class="en">Per wallet</span><span class="zh">每錢包上限</span></div><div class="v"><span class="en">Max 10 keys</span><span class="zh">最多 10 把</span></div></div>
+<div class="fact"><div class="k"><span class="en">Gate</span><span class="zh">門檻</span></div><div class="v">Binance Agent ID</div></div>
 </div>
-<div class="prompt"><div class="k">Say this to your agent</div><p>"Read https://agentbrowser.fun/epochia-skill.md and mint an Epoch Key for my wallet."</p></div>
+<div class="prompt"><div class="k"><span class="en">Say this to your agent</span><span class="zh">這樣告訴你的代理</span></div><p><span class="en">"Read https://agentbrowser.fun/agentbrowser-skill.md and mint a Browser Key for my wallet."</span><span class="zh">「請閱讀 https://agentbrowser.fun/agentbrowser-skill.md，為我的錢包鑄造一把 Browser Key。」</span></p></div>
 </div></section>
 
 <section class="blk alt" id="harvest"><div class="wrap">
-<span class="tag">02 · Daily Harvest</span>
-<h2>Every key harvests, every day</h2>
-<p class="sub">One key earns one claim per day. Claims you skip do not vanish: they stack up and can be collected in a single transaction whenever your agent gets to it. Harvesting costs no fee, only network gas.</p>
+<span class="tag">02 · <span class="en">Daily Harvest</span><span class="zh">每日收穫</span></span>
+<h2><span class="en">Every key harvests, every day</span><span class="zh">每把鑰匙，每日收穫</span></h2>
+<p class="sub"><span class="en">One key earns one claim per day. Claims you skip do not vanish: they stack up and can be collected in a single transaction whenever your agent gets to it. Harvesting costs no fee, only network gas.</span><span class="zh">一把鑰匙每日賺取一次領取。跳過的日子不會消失：領取額會累積起來，代理可隨時以一筆交易全數領取。收穫不收費用，只需網絡 gas。</span></p>
 <div class="cards">
-<div class="card"><h3>Per key, per day</h3><p class="big">42,000 EPO</p><p>in Epoch 1. The amount halves when the network crosses each epoch line.</p></div>
-<div class="card"><h3>Claims stack</h3><p class="big">No expiry</p><p>Miss a week and the week is still yours. One claim call collects everything owed.</p></div>
-<div class="card"><h3>Eleven epochs</h3><p class="big">Then it ends</p><p>After Epoch 11 the mine closes forever. What is unharvested in the reserve is never minted.</p></div>
+<div class="card"><h3><span class="en">Per key, per day</span><span class="zh">每把鑰匙，每日</span></h3><p class="big">42,000 BROWSE</p><p><span class="en">in Epoch 1. The amount halves when the network crosses each epoch line.</span><span class="zh">於 Epoch 1。每當全網絡跨越一個週期界線，金額便減半。</span></p></div>
+<div class="card"><h3><span class="en">Claims stack</span><span class="zh">領取可累積</span></h3><p class="big"><span class="en">No expiry</span><span class="zh">永不過期</span></p><p><span class="en">Miss a week and the week is still yours. One claim call collects everything owed.</span><span class="zh">錯過一星期，那一星期仍然屬於你。一次領取即可收齊所有欠額。</span></p></div>
+<div class="card"><h3><span class="en">Eleven epochs</span><span class="zh">十一個週期</span></h3><p class="big"><span class="en">Then it ends</span><span class="zh">然後完結</span></p><p><span class="en">After Epoch 11 the mine closes forever. What is unharvested in the reserve is never minted.</span><span class="zh">Epoch 11 結束後，礦場永遠關閉。儲備中未被收穫的部分永遠不會鑄造。</span></p></div>
 </div>
-<table class="sched"><tr><th>Epoch</th><th class="n">Per claim</th><th class="n">Epoch length</th></tr><tr class="now"><td>Epoch 1</td><td class="n">42,000 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 2</td><td class="n">21,000 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 3</td><td class="n">10,500 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 4</td><td class="n">5,250 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 5</td><td class="n">2,625 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 6</td><td class="n">1,312 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 7</td><td class="n">656 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 8</td><td class="n">328 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 9</td><td class="n">164 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 10</td><td class="n">82 EPO</td><td class="n">150,000 claims</td></tr><tr><td>Epoch 11</td><td class="n">41 EPO</td><td class="n">150,000 claims</td></tr></table>
+<table class="sched"><tr><th>Epoch</th><th class="n"><span class="en">Per claim</span><span class="zh">每次領取</span></th><th class="n"><span class="en">Claims per epoch</span><span class="zh">每週期領取次數</span></th></tr><tr class="now"><td>Epoch 1</td><td class="n">42,000 BROWSE</td><td class="n">150,000</td></tr><tr><td>Epoch 2</td><td class="n">21,000 BROWSE</td><td class="n">150,000</td></tr><tr><td>Epoch 3</td><td class="n">10,500 BROWSE</td><td class="n">150,000</td></tr><tr><td>Epoch 4</td><td class="n">5,250 BROWSE</td><td class="n">150,000</td></tr><tr><td>Epoch 5</td><td class="n">2,625 BROWSE</td><td class="n">150,000</td></tr><tr><td>Epoch 6</td><td class="n">1,312 BROWSE</td><td class="n">150,000</td></tr><tr><td>Epoch 7</td><td class="n">656 BROWSE</td><td class="n">150,000</td></tr><tr><td>Epoch 8</td><td class="n">328 BROWSE</td><td class="n">150,000</td></tr><tr><td>Epoch 9</td><td class="n">164 BROWSE</td><td class="n">150,000</td></tr><tr><td>Epoch 10</td><td class="n">82 BROWSE</td><td class="n">150,000</td></tr><tr><td>Epoch 11</td><td class="n">41 BROWSE</td><td class="n">150,000</td></tr></table>
 </div></section>
 
 <section class="blk"><div class="wrap">
-<span class="tag">03 · How it works</span>
-<h2>Three steps, all through your agent</h2>
+<span class="tag">03 · <span class="en">How it works</span><span class="zh">運作方式</span></span>
+<h2><span class="en">Three steps, all through your agent</span><span class="zh">三個步驟，全部經由你的代理</span></h2>
 <div class="steps">
-<div class="step"><span class="no">STEP 1</span><h3>Agent mints the key</h3><p>Your Binance Agentic Wallet agent reads the skill file and mints an Epoch Key for $0.50 in BNB. One purchase, once.</p></div>
-<div class="step"><span class="no">STEP 2</span><h3>Key starts earning</h3><p>From the next day onward, each key in your wallet accrues one EPO claim per day at the current epoch rate.</p></div>
-<div class="step"><span class="no">STEP 3</span><h3>Agent harvests</h3><p>Whenever you ask, your agent collects every stacked claim into your wallet in one call. Then the keys keep earning.</p></div>
+<div class="step"><span class="no">STEP 1</span><h3><span class="en">Agent mints the key</span><span class="zh">代理鑄造鑰匙</span></h3><p><span class="en">Your Binance Agentic Wallet agent reads the skill file and mints a Browser Key for $0.50 in BNB. One purchase, once.</span><span class="zh">你的 Binance Agentic Wallet 代理會閱讀技能檔案，以 $0.50 的 BNB 鑄造一把 Browser Key。一次購買，一次完成。</span></p></div>
+<div class="step"><span class="no">STEP 2</span><h3><span class="en">Key starts earning</span><span class="zh">鑰匙開始賺取</span></h3><p><span class="en">From the next day onward, each key in your wallet accrues one BROWSE claim per day at the current epoch rate.</span><span class="zh">由翌日起，你錢包內的每把鑰匙每日累積一次 BROWSE 領取，按目前週期比率計算。</span></p></div>
+<div class="step"><span class="no">STEP 3</span><h3><span class="en">Agent harvests</span><span class="zh">代理收穫</span></h3><p><span class="en">Whenever you ask, your agent collects every stacked claim into your wallet in one call. Then the keys keep earning.</span><span class="zh">每當你提出要求，代理便以一次呼叫把所有累積領取收進你的錢包。之後鑰匙繼續賺取。</span></p></div>
 </div>
 </div></section>
 
 <section class="blk alt"><div class="wrap">
-<span class="tag">04 · Go deeper</span>
-<h2>The full picture, in the open</h2>
+<span class="tag">04 · <span class="en">Go deeper</span><span class="zh">深入了解</span></span>
+<h2><span class="en">The full picture, in the open</span><span class="zh">全貌公開，毫無保留</span></h2>
 <div class="cards">
-<div class="card"><h3>Whitepaper</h3><p>Why Epochia exists, how the harvest schedule works, and what ends the mine.</p><p style="margin-top:12px"><a class="btn" href="/whitepaper.html">Open</a></p></div>
-<div class="card"><h3>Tokenomics</h3><p>21 billion EPO, fixed forever. Where every token sits and what key sales fund.</p><p style="margin-top:12px"><a class="btn" href="/tokenomics.html">Open</a></p></div>
-<div class="card"><h3>Docs and FAQ</h3><p>Plain answers for holders, plus the exact instructions agents follow.</p><p style="margin-top:12px"><a class="btn" href="/docs.html">Open</a></p></div>
+<div class="card"><h3><span class="en">Whitepaper</span><span class="zh">白皮書</span></h3><p><span class="en">Why Agent Browser exists, how the harvest schedule works, and what ends the mine.</span><span class="zh">Agent Browser 為何存在、收穫時間表如何運作，以及甚麼會令礦場完結。</span></p><p style="margin-top:12px"><a class="btn" href="/whitepaper.html"><span class="en">Open</span><span class="zh">打開</span></a></p></div>
+<div class="card"><h3><span class="en">Tokenomics</span><span class="zh">代幣經濟</span></h3><p><span class="en">21 billion BROWSE, fixed forever. Where every token sits and what key sales fund.</span><span class="zh">210 億 BROWSE，永遠固定。每枚代幣的去向，以及鑰匙銷售的用途。</span></p><p style="margin-top:12px"><a class="btn" href="/tokenomics.html"><span class="en">Open</span><span class="zh">打開</span></a></p></div>
+<div class="card"><h3><span class="en">Docs and FAQ</span><span class="zh">文件與常見問題</span></h3><p><span class="en">Plain answers for holders, plus the exact instructions agents follow.</span><span class="zh">為持有人準備的簡單答案，以及代理遵循的確切指示。</span></p><p style="margin-top:12px"><a class="btn" href="/docs.html"><span class="en">Open</span><span class="zh">打開</span></a></p></div>
 </div>
 </div></section>
 <footer><div class="wrap">
 <div class="cols">
-<div><h4>Epochia</h4><p style="font-weight:560;max-width:340px">One key opens the mine. Hold the Epoch Key, harvest EPO every day, and watch the epochs halve the harvest until the mine closes for good.</p></div>
-<div><h4>Read</h4><a href="/whitepaper.html">Whitepaper</a><a href="/tokenomics.html">Tokenomics</a><a href="/docs.html">Docs and FAQ</a><a href="/epochia-skill.md">Agent skill file</a></div>
-<div><h4>Contracts</h4><a href="#">Epoch Key (NFT): announced at launch</a><a href="#">EPO token: announced at launch</a><a href="#">Harvest: announced at launch</a></div>
+<div><h4>Agent Browser</h4><p style="font-weight:560;max-width:340px"><span class="en">One key opens the mine. Hold a Browser Key, harvest BROWSE every day, and watch the epochs halve the harvest until the mine closes for good.</span><span class="zh">一把鑰匙打開礦場。持有 Browser Key，每日收穫 BROWSE，見證每個週期令收穫減半，直至礦場永遠關閉。</span></p></div>
+<div><h4><span class="en">Read</span><span class="zh">閱讀</span></h4><a href="/whitepaper.html"><span class="en">Whitepaper</span><span class="zh">白皮書</span></a><a href="/tokenomics.html"><span class="en">Tokenomics</span><span class="zh">代幣經濟</span></a><a href="/docs.html"><span class="en">Docs and FAQ</span><span class="zh">文件與常見問題</span></a><a href="/agentbrowser-skill.md"><span class="en">Agent skill file</span><span class="zh">代理技能檔案</span></a></div>
+<div><h4><span class="en">Contracts</span><span class="zh">合約</span></h4><a href="#"><span class="en">Browser Key (NFT): announced at launch</span><span class="zh">Browser Key (NFT)：上線時公佈</span></a><a href="#"><span class="en">BROWSE token: announced at launch</span><span class="zh">BROWSE 代幣：上線時公佈</span></a><a href="#"><span class="en">Harvest: announced at launch</span><span class="zh">收穫合約：上線時公佈</span></a></div>
 </div>
-<p class="fine">EPOCHIA · AGENTBROWSER.FUN · BNB SMART CHAIN · MINTING RUNS ONLY THROUGH YOUR OWN BINANCE AGENTIC WALLET AGENT · THIS SITE NEVER ASKS YOU TO CONNECT A WALLET</p>
+<p class="fine">AGENT BROWSER · AGENTBROWSER.FUN · BNB SMART CHAIN · <span class="en">MINTING RUNS ONLY THROUGH YOUR OWN BINANCE AGENTIC WALLET AGENT · THIS SITE NEVER ASKS YOU TO CONNECT A WALLET</span><span class="zh">鑄造只經由你自己的 BINANCE AGENTIC WALLET 代理進行 · 本站永不要求連接錢包</span></p>
 </div></footer>
-<script src="/app.js?v=1"></script>
+<script src="/lang.js?v=1"></script>
+<script src="/app.js?v=2"></script>
 </body></html>
