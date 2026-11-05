@@ -117,3 +117,81 @@ if (document.getElementById("bEpoch")) { board(); setInterval(board, 30000); }
     kc.addEventListener("pointerleave", () => { kc.style.transform = ""; });
   }
 })();
+
+// ---- Latar interaktif hero: percikan tambang, lampu pointer, paralaks strata ----
+(function () {
+  const hero = document.querySelector(".hero");
+  const cvs = document.getElementById("fx");
+  if (!hero || !cvs) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const ctx = cvs.getContext("2d");
+  const COLORS = ["#FFB03A", "#FF6B4A", "#FFE3A3", "#FAF5EA"];
+  let W = 0, H = 0, parts = [], running = true, visible = true;
+  const DPR = Math.min(window.devicePixelRatio || 1, 1.75);
+  function spawn(anywhere) {
+    return { x: Math.random() * W, y: anywhere ? Math.random() * H : H + 6, r: 1 + Math.random() * 2.2, s: 0.18 + Math.random() * 0.5, drift: (Math.random() - 0.5) * 0.24, ph: Math.random() * Math.PI * 2, c: COLORS[(Math.random() * COLORS.length) | 0], burst: 0, vx: 0, vy: 0 };
+  }
+  function resize() {
+    const r = hero.getBoundingClientRect();
+    W = r.width; H = r.height;
+    cvs.width = Math.round(W * DPR); cvs.height = Math.round(H * DPR);
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    const target = Math.max(18, Math.min(46, Math.round(W / 26)));
+    while (parts.length < target) parts.push(spawn(true));
+    if (parts.length > target) parts.length = target;
+  }
+  function burst(x, y) {
+    for (let i = 0; i < 12; i++) {
+      const a = Math.random() * Math.PI * 2, sp = 0.6 + Math.random() * 2.2;
+      parts.push({ x: x, y: y, r: 1 + Math.random() * 2.4, s: 0, drift: 0, ph: Math.random() * Math.PI * 2, c: COLORS[(Math.random() * COLORS.length) | 0], burst: 1, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 0.6 });
+    }
+  }
+  let t = 0;
+  function frame() {
+    requestAnimationFrame(frame);
+    if (!running || !visible) return;
+    t += 0.016;
+    ctx.clearRect(0, 0, W, H);
+    for (let i = parts.length - 1; i >= 0; i--) {
+      const pt = parts[i];
+      if (pt.burst) {
+        pt.x += pt.vx; pt.y += pt.vy; pt.vx *= 0.96; pt.vy = pt.vy * 0.96 - 0.012; pt.r *= 0.985;
+        if (pt.r < 0.4) { parts.splice(i, 1); continue; }
+      } else {
+        pt.y -= pt.s; pt.x += pt.drift + Math.sin(t * 1.4 + pt.ph) * 0.18;
+        if (pt.y < -8 || pt.x < -8 || pt.x > W + 8) parts[i] = spawn(false);
+      }
+      ctx.globalAlpha = (0.45 + 0.55 * Math.abs(Math.sin(t * 1.8 + pt.ph))) * 0.85;
+      ctx.fillStyle = pt.c;
+      ctx.beginPath(); ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+  const strataEl = hero.querySelector(".strata");
+  let mx = 0.72, my = 0.26, tx = mx, ty = my, par = 0, parT = 0;
+  hero.addEventListener("pointermove", (ev) => {
+    const r = hero.getBoundingClientRect();
+    tx = (ev.clientX - r.left) / r.width; ty = (ev.clientY - r.top) / r.height;
+  }, { passive: true });
+  hero.addEventListener("pointerdown", (ev) => {
+    const r = hero.getBoundingClientRect();
+    burst(ev.clientX - r.left, ev.clientY - r.top);
+  }, { passive: true });
+  function glide() {
+    requestAnimationFrame(glide);
+    mx += (tx - mx) * 0.06; my += (ty - my) * 0.06;
+    hero.style.setProperty("--mx", (mx * 100).toFixed(2) + "%");
+    hero.style.setProperty("--my", (my * 100).toFixed(2) + "%");
+    const r = hero.getBoundingClientRect();
+    parT = Math.max(0, Math.min(1, -r.top / Math.max(1, r.height))) * 16;
+    par += (parT - par) * 0.08;
+    if (strataEl) strataEl.style.transform = "translateY(" + par.toFixed(2) + "px)";
+  }
+  if ("IntersectionObserver" in window) new IntersectionObserver((es) => es.forEach((e) => { visible = e.isIntersecting; })).observe(hero);
+  document.addEventListener("visibilitychange", () => { running = !document.hidden; });
+  addEventListener("resize", resize, { passive: true });
+  resize();
+  requestAnimationFrame(frame);
+  requestAnimationFrame(glide);
+})();
+
