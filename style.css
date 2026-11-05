@@ -116,6 +116,15 @@ table.sched tr.sel td { background: #FFE9D6; font-weight: 700; }
 .schedinfo { font-family: "PlexMono", monospace; font-size: 13.5px; margin-top: 12px; color: var(--ink2); }
 .keycard { transition: transform .25s ease; transform-style: preserve-3d; }
 @media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } .keycard { transition: none; } }
+.launch { background: var(--plum); color: var(--paper); border-bottom: 3px solid var(--line); }
+.launch-in { padding: 26px 0; display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between; }
+.launch h2 { color: var(--paper); font-size: clamp(26px, 4.5vw, 38px); }
+.launch h2 .sun { color: var(--amber); }
+.launch .when { font-family: "PlexMono", monospace; font-size: 14px; color: #D8CDB4; margin-top: 6px; }
+.cd { display: flex; gap: 10px; }
+.cd .u { background: rgba(250,245,234,.08); border: 2px solid rgba(250,245,234,.35); border-radius: 12px; padding: 8px 0; width: 74px; text-align: center; }
+.cd .n { font-family: "PlexMono", monospace; font-weight: 600; font-size: 26px; }
+.cd .l { font-family: "PlexMono", monospace; font-size: 10px; letter-spacing: .14em; color: #D8CDB4; }
 .keycard { width: 100%; max-width: 340px; aspect-ratio: 8 / 5; border: 2px solid var(--line); border-radius: 20px; overflow: hidden; box-shadow: 8px 8px 0 var(--line); background: var(--plum); color: var(--paper); display: flex; flex-direction: column; }
 .keycard .bands { flex: 1; display: flex; flex-direction: column; position: relative; }
 .keycard .bands i { flex: 1; display: block; }
