@@ -26,6 +26,24 @@ async function board() {
   if (bar) bar.style.width = (inEpoch / PER_EPOCH * 100).toFixed(2) + "%";
 }
 if (document.getElementById("bEpoch")) { board(); setInterval(board, 30000); }
+// Countdown peluncuran $BROWSE: 12 Nov 2026 00:00 UTC.
+(function () {
+  const box = document.getElementById("cd");
+  if (!box) return;
+  const target = Date.UTC(2026, 10, 12, 0, 0, 0);
+  const el = (id) => document.getElementById(id);
+  function tick() {
+    let ms = target - Date.now();
+    if (ms < 0) ms = 0;
+    const s = Math.floor(ms / 1000);
+    el("cdD").textContent = Math.floor(s / 86400);
+    el("cdH").textContent = Math.floor(s % 86400 / 3600);
+    el("cdM").textContent = Math.floor(s % 3600 / 60);
+    el("cdS").textContent = s % 60;
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
 
 // ---- Interaktivitas: reveal, copy prompt, tooltip chart, tabel epoch, tilt kartu ----
 (function () {
