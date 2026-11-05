@@ -1,6 +1,6 @@
 // Agent Browser live board. Contracts are announced at launch; until
 // CONFIG.key is set, the board renders the genesis schedule (Epoch 1).
-const CONFIG = { key: "", harvest: "", rpc: ["https://bsc-dataseed1.binance.org", "https://bsc-dataseed-public.bnbchain.org", "https://bsc-rpc.publicnode.com"] };
+const CONFIG = { key: "0x6F61c7467eABe2139598CE49B6Fd2022880478f9", harvest: "0x397a913A3EaD02018bCBb82b67b1b70B1d9EB0A3", rpc: ["https://bsc-dataseed1.binance.org", "https://bsc-dataseed-public.bnbchain.org", "https://bsc-rpc.publicnode.com"] };
 const PER_EPOCH = 150000, FIRST = 42000;
 function fmt(n) { return n.toLocaleString("en-US"); }
 async function call(to, data) {
