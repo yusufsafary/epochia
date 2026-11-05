@@ -18,6 +18,7 @@ mintOpen() 及收穫合約的 claimOpen()。
 - BROWSE token: 0x119Fa3BF44A32692aBC06D2c7E9b8059C81FCC6e
 - Harvest (claims / 收穫): 0x397a913A3EaD02018bCBb82b67b1b70B1d9EB0A3
 - Agent ID registry (SPACE ID): 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F
+- Token launch / 代幣上線: BROWSE lists on PancakeSwap on 12 November 2026, 00:00 UTC. / BROWSE 將於 2026 年 11 月 12 日 00:00 UTC 在 PancakeSwap 上線。
 
 ## Model / 模型
 
