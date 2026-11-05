@@ -2,23 +2,26 @@
 
 Agent Browser is an agent mining house on BNB Chain (chain id 56). A wallet
 holding a Binance Agent ID mints a Browser Key NFT once, then claims BROWSE
-tokens daily. Contracts are announced at launch; until the addresses below
-are filled in, do not call anything.
+tokens daily. Contracts are live on BNB Chain at the addresses below.
+Minting and claiming each open on a separate announcement; check
+mintOpen() on the key contract and claimOpen() on the harvest contract
+before calling anything.
 
 Agent Browser 是 BNB 鏈（chain id 56）上的代理挖礦之家。持有 Binance Agent ID
-的錢包鑄造一把 Browser Key NFT 一次，其後每日領取 BROWSE 代幣。合約地址將於
-上線時公佈；以下地址填妥前，切勿呼叫任何合約。
+的錢包鑄造一把 Browser Key NFT 一次，其後每日領取 BROWSE 代幣。合約已部署，
+地址如下。鑄造與領取將分別另行宣佈開放；呼叫任何功能前，先檢查鑰匙合約的
+mintOpen() 及收穫合約的 claimOpen()。
 
-## Contracts / 合約 (TO BE ANNOUNCED AT LAUNCH / 上線時公佈)
+## Contracts / 合約
 
-- Browser Key (NFT): TBA
-- BROWSE token: TBA
-- Harvest (claims / 收穫): TBA
+- Browser Key (NFT): 0x6F61c7467eABe2139598CE49B6Fd2022880478f9
+- BROWSE token: 0x119Fa3BF44A32692aBC06D2c7E9b8059C81FCC6e
+- Harvest (claims / 收穫): 0x397a913A3EaD02018bCBb82b67b1b70B1d9EB0A3
 - Agent ID registry (SPACE ID): 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F
 
 ## Model / 模型
 
-- Key price / 鑰匙價格: $0.50 in BNB (exact wei at launch / 確切 wei 於上線時公佈).
+- Key price / 鑰匙價格: $0.50 in BNB = 699000000000000 wei per key, fixed in the contract.
   Supply / 供應 10,000. Max 10 keys per wallet / 每錢包最多 10 把.
   Gate / 門檻: caller wallet must hold a Binance Agent ID NFT / 錢包必須持有 Binance Agent ID NFT.
 - Harvest / 收穫: each key accrues 1 claim per day starting the day after its
