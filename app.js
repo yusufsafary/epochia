@@ -3,6 +3,19 @@
 const CONFIG = { key: "0x6F61c7467eABe2139598CE49B6Fd2022880478f9", harvest: "0x397a913A3EaD02018bCBb82b67b1b70B1d9EB0A3", rpc: ["https://bsc-dataseed1.binance.org", "https://bsc-dataseed-public.bnbchain.org", "https://bsc-rpc.publicnode.com"] };
 const PER_EPOCH = 150000, FIRST = 42000;
 function fmt(n) { return n.toLocaleString("en-US"); }
+function tweenNum(id, to) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const from = parseInt((el.dataset.v || "0").replace(/[^0-9]/g, ""), 10) || 0;
+  el.dataset.v = String(to);
+  if (from === to || window.matchMedia("(prefers-reduced-motion: reduce)").matches) { el.textContent = fmt(to); return; }
+  const t0 = performance.now(), dur = 650;
+  (function step(t) {
+    const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+    el.textContent = fmt(Math.round(from + (to - from) * e));
+    if (p < 1 && parseInt(el.dataset.v, 10) === to) requestAnimationFrame(step);
+  })(t0);
+}
 async function call(to, data) {
   const body = JSON.stringify({ jsonrpc: "2.0", id: 1, method: "eth_call", params: [{ to, data }, "latest"] });
   const tries = CONFIG.rpc.map((u) => fetch(u, { method: "POST", headers: { "Content-Type": "application/json" }, body, signal: AbortSignal.timeout(5000) }).then((r) => r.json()).then((j) => { if (!j.result) throw 0; return j.result; }));
@@ -20,10 +33,12 @@ async function board() {
   const set = (id, v) => { const el = document.getElementById(id); if (el) el.innerHTML = v; };
   set("bEpoch", epoch + ' <span style="font-size:.45em">of 11</span>');
   set("bPer", fmt(Math.floor(per)));
-  set("bClaims", fmt(Number(claims)));
-  set("bKeys", fmt(Number(keys)));
+  tweenNum("bClaims", Number(claims));
+  tweenNum("bKeys", Number(keys));
   const bar = document.getElementById("bBar");
   if (bar) bar.style.width = (inEpoch / PER_EPOCH * 100).toFixed(2) + "%";
+  window.AB = { epoch: epoch, per: Math.floor(per) };
+  document.dispatchEvent(new Event("ab:board"));
 }
 if (document.getElementById("bEpoch")) { board(); setInterval(board, 30000); }
 // Countdown peluncuran $BROWSE: 12 Nov 2026 00:00 UTC.
@@ -194,4 +209,77 @@ if (document.getElementById("bEpoch")) { board(); setInterval(board, 30000); }
   requestAnimationFrame(frame);
   requestAnimationFrame(glide);
 })();
+
+// ---- Interaktif v6: titik epoch, kalkulator panen, tap kunci ----
+(function () {
+  const RATES = [42000, 21000, 10500, 5250, 2625, 1312, 656, 328, 164, 82, 41];
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.AB = window.AB || { epoch: 1, per: 42000 };
+
+  const dotsBox = document.getElementById("eDots");
+  const eInfo = document.getElementById("eInfo");
+  let selEpoch = 0;
+  function paintDots() {
+    if (!dotsBox) return;
+    const cur = Math.min(11, Math.max(1, window.AB.epoch || 1));
+    dotsBox.querySelectorAll("button").forEach((b) => {
+      const e = parseInt(b.dataset.e, 10);
+      b.classList.toggle("done", e < cur);
+      b.classList.toggle("now", e === cur);
+      b.classList.toggle("sel", e === selEpoch);
+    });
+  }
+  function showEpoch(e) {
+    selEpoch = e;
+    const from = (e - 1) * 150000, to = e * 150000;
+    if (eInfo) eInfo.innerHTML =
+      '<span class="en">Epoch ' + e + " · " + fmt(RATES[e - 1]) + " BROWSE per claim · network claims " + fmt(from) + " to " + fmt(to) + "</span>" +
+      '<span class="zh">Epoch ' + e + " · 每次領取 " + fmt(RATES[e - 1]) + " BROWSE · 全網絡領取 " + fmt(from) + " 至 " + fmt(to) + "</span>";
+    paintDots();
+  }
+  if (dotsBox) {
+    for (let e = 1; e <= 11; e++) {
+      const b = document.createElement("button");
+      b.type = "button"; b.dataset.e = e;
+      b.setAttribute("aria-label", "Epoch " + e);
+      b.addEventListener("click", () => { showEpoch(e); });
+      dotsBox.appendChild(b);
+    }
+    paintDots();
+  }
+
+  const cK = document.getElementById("cKeys"), cD = document.getElementById("cDays");
+  function calc() {
+    if (!cK || !cD) return;
+    const keys = parseInt(cK.value, 10), days = parseInt(cD.value, 10);
+    const per = (window.AB && window.AB.per) || 42000;
+    document.getElementById("cKeysV").textContent = keys;
+    document.getElementById("cDaysV").textContent = days;
+    document.getElementById("cTotal").textContent = fmt(keys * days * per);
+    document.getElementById("cPerDay").innerHTML =
+      '<span class="en">= ' + fmt(keys * per) + " per day across your keys</span>" +
+      '<span class="zh">= 你的鑰匙每日共 ' + fmt(keys * per) + "</span>";
+  }
+  if (cK && cD) { cK.addEventListener("input", calc); cD.addEventListener("input", calc); calc(); }
+
+  document.addEventListener("ab:board", () => { paintDots(); calc(); });
+
+  const kc = document.getElementById("keyCard");
+  if (kc && !reduced) {
+    kc.addEventListener("pointerdown", (ev) => {
+      const r = kc.getBoundingClientRect();
+      for (let i = 0; i < 2; i++) {
+        const chip = document.createElement("span");
+        chip.className = "chip";
+        chip.textContent = "+" + fmt((window.AB && window.AB.per) || 42000);
+        chip.style.left = (ev.clientX - r.left + (i ? 26 : -12)) + "px";
+        chip.style.top = (ev.clientY - r.top - 8 - i * 14) + "px";
+        kc.appendChild(chip);
+        setTimeout(() => chip.remove(), 1250);
+      }
+      kc.classList.remove("pulse"); void kc.offsetWidth; kc.classList.add("pulse");
+    });
+  }
+})();
+
 
